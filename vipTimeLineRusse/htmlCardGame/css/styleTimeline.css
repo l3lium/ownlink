@@ -1,0 +1,197 @@
+body {
+  margin: 30px;
+  font-family: "Georgia", serif;
+  line-height: 1.8em;
+  color: #333;
+  width:100%;
+  height:100%;
+  background:url(../img/bgRussia.jpg);
+  background-repeat:no-repeat;
+background-size:115% 150%;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  text-align:center;
+}
+p {text-align:justify;}
+ 
+/* Main content area */
+#content {
+  margin: 5px 5px;
+  text-align: center;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.correct {
+background : #71D015 ; !important;
+} 
+ 
+#bottomCardSlots {
+  background: #ddf;
+}
+#topCardSlots {
+margin-left:-9px;
+}
+.train {
+	background: url(../img/train2.png);
+	height: 350px;
+	background-repeat:no-repeat;
+	background-position:9% 15%;
+	margin-bottom : -15px;
+} 
+
+.rail {
+	background: url(../img/train1.png);
+	height: 220px;
+	background-repeat:no-repeat;
+	background-position:9% 15%;
+	margin-bottom : -15px;
+}
+#cardPile {
+  width: 860px;
+  height: 220px;
+  padding: 10px;
+  margin-left:15px;
+}
+ 
+/* Individual cards and slots */
+#topCardSlots div, #cardPile div {
+  float: left;
+  width: 135px;
+  height: 215px;
+  padding: 4px;
+  padding-top: 4px;
+  padding-bottom: 0;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  margin: 0 0 0 10px;
+}
+#topCardSlots div {
+border:0px;
+}
+
+img {
+	width:130px;
+	height:205px;
+	border: 1px solid grey;
+ -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+  box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+
+}
+ 
+.ui-state-highlight{
+  background: #77527B;
+}
+ 
+#cardPile div {
+  color: #fff;
+}
+ 
+#cardPile div {
+  -moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+  box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+}
+ 
+.info {
+  position: absolute;
+  left: 580px; !important;
+  top: 130px; !important;
+  width: 0;
+  height: auto;
+  z-index: 100;
+  background: #FEE9A0;
+  border: 2px solid #333;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
+  -webkit-box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
+  box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
+  padding: 20px;
+}
+
+
+.info button  {
+	margin-left:190px;
+	-moz-box-shadow:inset 0px 1px 0px 0px #fff6af;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #fff6af;
+	box-shadow:inset 0px 1px 0px 0px #fff6af;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffec64), color-stop(1, #ffab23) );
+	background:-moz-linear-gradient( center top, #ffec64 5%, #ffab23 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffec64', endColorstr='#ffab23');
+	background-color:#ffec64;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #ffaa22;
+	display:inline-block;
+	color:#333333;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #ffee66;
+}.info button:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffab23), color-stop(1, #ffec64) );
+	background:-moz-linear-gradient( center top, #ffab23 5%, #ffec64 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffab23', endColorstr='#ffec64');
+	background-color:#ffab23;
+}
+.info button:active {
+	position:relative;
+	top:1px;
+}
+
+/*cheat code found on the internet to make the sortable work on float left divs! THX : http://forum.jquery.com/topic/connecttosortable-fails-when-sortable-list-is-floated*/
+#cardPile:after { clear:both; content:'.'; display:block; height:0; line-height:0; font-size:0; visibility:hidden; padding:0; margin:0; }
+#topCardSlots:after { clear:both; content:'.'; display:block; height:0; line-height:0; font-size:0; visibility:hidden; padding:0; margin:0; }
+
+
+#topCardSlots.beginningMargin {
+margin-left : 295px; !important;
+}
+
+.counter {
+  float: right;
+  margin-right : -35px;
+  text-align: right;
+}
+
+ul li {
+list-style:none;
+}
+
+.indice {
+  position: absolute;
+  left: 680px; !important;
+  top: 20px; !important;
+  width: 350px;
+  height: auto;
+  z-index: 100;
+  background: white;
+  opacity : 0.9;
+  border: 2px solid #333;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
+  -webkit-box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
+  box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
+  padding: 10px;
+}
+
+
+.texteIndice {
+font-style:italic;
+color: #77527B;
+}

@@ -1,0 +1,456 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+	<title>Voyage en Russie</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="css/styleTimeline.css">
+	 
+	<script type="text/javascript" src="scripts/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="scripts/jquery-ui-1.10.3.custom.min.js"></script>
+	<script type="text/javascript" src="scripts/scriptTimeline.js"></script>
+	 
+</head>
+<body>
+	<audio id="wellDone">
+	  <source src="sounds//wellDone.ogg" type="audio/ogg">
+	  <source src="sounds//wellDone.mp3" type="audio/mpeg">
+	</audio>
+
+	<audio id="badMove">
+	  <source src="sounds//badMove.ogg" type="audio/ogg">
+	  <source src="sounds//badMove.mp3" type="audio/mpeg">
+	</audio>
+
+	<audio id="gameOver">
+	  <source src="sounds//gameOver.ogg" type="audio/ogg">
+	  <source src="sounds//gameOver.mp3" type="audio/mpeg">
+	</audio>
+
+	<audio id="train">
+	  <source src="sounds//train.ogg" type="audio/ogg">
+	  <source src="sounds//train.mp3" type="audio/mpeg">
+	</audio>
+	<div id="content">
+	<div class="counter">
+				<ul>
+				<li>Mauvaises tentatives : <span id="badAnswers"></span></li>
+				</ul>
+			</div>
+		<div class="train"> 
+			<div id="topCardSlots" class="slot beginningMargin">
+			</div>
+		</div>	
+		<div id="cardPile">
+		</div>
+	</div>	
+	
+	<!-------------------hidden divs that are shown via js--------------------->
+	
+	<div class="info" id="successMessage">
+		<h2>Bravo, tu as réussi! Tu es un vrai marchand russe et tu connais bien l’histoire de ton pays !</h2>
+		<button onclick="init()">Rejouer</button>
+	 </div>
+	 
+	<div class="info" id="failureMessage">
+		<h2>Désolé, tu as fait trop d'erreurs, tu as perdu cette partie, mais tu peux re-jouer pour t'améliorer!</h2>
+		<button onclick="init()">Rejouer</button>
+	</div>
+
+	<div class="info" id="info1">
+		<h2>Début du règne d’Ivan le Terrible - 1547</h2>
+		<p>
+		Ivan IV (4) est le 1er Tsar (roi) de la Russie unifiée. Il est surnommé le Terrible, car il est très cruel.
+		Il modernise la Russie, en introduisant la presse à imprimer par exemple.
+		Mais il rend aussi la vie très dure aux paysans, en mettant en place le servage (esclavage) 
+		qui va exister jusqu’au 19ème siècle.
+		</p>
+		<button onclick="">Continuer</button>
+	 </div>
+	 
+	<div class="indice" id="indice1">
+		<p><b>Dommage tu t'es trompé, mais voici un indice qui te sera utile.<br/><br/>
+		<label class="texteIndice">Ce tsar à régné 4 siècle avant la création du Sacre du printemps.</label></b>
+		</p>
+	 </div>
+	 
+	<div class="info" id="info2">
+		<h2>Début du règne de Pierre le Grand - 1721</h2>
+		<p>
+		Il fait partie, comme Ivan IV, de la dynastie des Romanov. Pierre Le Grand termine l’unification 
+		de l’empire russe et le fait connaître et apprécier en Europe.Il construit la ville de St-Petersbourg.
+		</p>
+		<button onclick="">Continuer</button>
+	</div>
+	 
+	<div class="indice" id="indice2">
+		<p><b>Dommage tu t'es trompé, mais voici un indice qui te sera utile.<br/><br/>
+		<label class="texteIndice">Il est du même siècle que Catherine II la grande</label></b>
+		</p>
+	</div>
+	 
+	<div class="info" id="info3">
+		<h2>Début du règne de Catherine La Grande - 1762</h2>
+		<p>
+		D’origine allemande, elle a épousé de petit-fils de Pierre le Grand, Elle fait assassiner son 
+		époux lors d’un coup d’état et s’empare du pouvoir. Elle est très appréciée du peuple russe. Elle est la première
+		à se faire vacciner contre la variole (maladie mortelle disparue aujourd’hui). Elle a régné en même temps que la Révolution éclate en France.
+		</p>
+		<button onclick="">Continuer</button>
+	 </div>
+	 
+	<div class="indice" id="indice3">
+		<p><b>Dommage tu t'es trompé, mais voici un indice qui te sera utile.<br/><br/>
+		<label class="texteIndice">Elle a épousé le petit fils de Pierre Le Grand</label></b>
+		</p>
+	</div>
+	 	 
+	<div class="info" id="info4">
+		<h2>Création du Lac des Cygnes - 1877</h2>
+		<p>
+		La première du Lac des Cygnes, ballet en 4 actes a lieu au théâtre du Bolchoi à Moscou. 
+		Tchaikovsky le compose au départ pour les enfants de sa soeur.
+		Les premières représentations ne sont pas un succès.
+		</p>
+		<button onclick="">Continuer</button>
+	</div>
+	 
+	<div class="indice" id="indice4">
+		<p><b>Dommage tu t'es trompé, mais voici un indice qui te sera utile.<br/><br/>
+		<label class="texteIndice">Le lac des cygnes a été créé 35 ans avant le Sacre du printemps</label></b>
+		</p>
+	</div>
+	 
+	<div class="info" id="info5">
+		<h2>Naissance d'Anastasia - 1901</h2>
+		<p>
+		Anastasia naît le 1er juin 1901. Elle est la 4ème fille du dernier tsar de Russie, Nicolas II. 
+		Elle parle couramment français, et n’aime pas beaucoup l’école. 
+		Elle est assassinée avec sa famille lors de la révolution russe de 1917. 
+		Dès lors, la légende de sa survie commence.
+		<p>
+		<button onclick="">Continuer</button>
+	</div>
+	 
+	<div class="indice" id="indice5">
+		<p><b>Dommage tu t'es trompé, mais voici un indice qui te sera utile.<br/><br/>
+		<label class="texteIndice">Elle naît au tout début d’un nouveau siècle</label></b>
+		</p>
+	</div>
+	 
+	<div class="info" id="info6">
+		<h2>Dimanche rouge - 1905</h2>
+		<p>
+		Le Dimanche rouge (en russe : Кровавое воскресенье) est l’un des évènements marquant le début 
+		de la révolution russe de 1905, qui éclate avant celle de en 1917. Les soldats de l’armée du 
+		Tsar Nicolas II se battent contre des ouvriers manifestant  pacifiquement pour de meilleures 
+		conditions de travail. Il y aurait eu 4000 morts.
+		</p>
+		<button onclick="">Continuer</button>
+	</div>
+	 
+	<div class="indice" id="indice6">
+		<p><b>Dommage tu t'es trompé, mais voici un indice qui te sera utile.<br/><br/>
+		<label class="texteIndice">Anastasia avait 4 ans lors de ces terribles évènements</label></b>
+		</p>
+	</div>
+	 
+	<div class="info" id="info7">
+		<h2>Création de Petrouchka - 1911</h2>
+		<p>
+		Petrouchka (en russe Петрушка), est un ballet dont la musique a été composée par Igor Stravinsky en 1910-1911.
+		Il a été créé le 13 juin 1911 au théâtre du Châtelet par les Ballets russes. 
+		Stravinsky a quitté la Russie au moment de la révolution, tout comme le danseur étoile 
+		Nijinkky.
+		</p>
+		<button onclick="">Continuer</button>
+	</div>
+	 
+	<div class="indice" id="indice7">
+		<p><b>Dommage tu t'es trompé, mais voici un indice qui te sera utile.<br/><br/>
+		<label class="texteIndice">Stravinsky n’a pas encore composé le Sacre du printemps</label></b>
+		</p>
+	</div>
+	 
+	<div class="info" id="info9">
+		<h2>Oeuvre:”Painting with three spots” - Kandinsky 1914</h2>
+		<p>
+		Vassily Kandinsky est un peintre. Ses nationalités sont russe, allemande et française. C'est l'un 
+		des fondateurs de l'art abstrait. Il est né à Moscou en 1866 et mort à Neuilly-sur-Seine en 1944. 
+		Il est l'un des artistes les plus importants du XXe siècle. 
+		Il a créé la première œuvre non figurative de l'art moderne, c'est-à-dire qui ne représente pas le réel.
+		Dans ses œuvres, il utilise principalement les formes géométriques comme le cercle, le carré, le triangle,
+		le rectangle, les lignes, les courbes...
+		</p>
+		<button onclick="">Continuer</button>
+	</div>
+	 
+	<div class="indice" id="indice9">
+		<p><b>Dommage tu t'es trompé, mais voici un indice qui te sera utile.<br/><br/>
+		<label class="texteIndice">4 ans après la création de cette oeuvre, la famille impériale de Nicolas II sera éliminée</label></b>
+		</p>
+	</div>
+	 
+	<div class="info" id="info10">
+		<h2>Kolkhozes - 1917</h2>
+		<p>
+		Un kolkhoze (en russe колхоз) était une coopérative agricole en Union soviétique, où les terres, 
+		les outils, le bétail étaient mis en commun. Ils apparaissent après la révolution de 1917. 
+		Les paysans travaillent la terre ensemble, ont le droit d’être propriétaire d’une partie des champs et
+		sont payés en fonction du temps qu’ils ont travaillé. Ils ont disparus avec la dissolution de l’Union 
+		soviétique.
+		</p>
+		<button onclick="">Continuer</button>
+	</div>
+	 
+	<div class="indice" id="indice10">
+		<p><b>Dommage tu t'es trompé, mais voici un indice qui te sera utile.<br/><br/>
+		<label class="texteIndice">Même année que la révolution d’octobre menée par Lénine juste avant sa prise de pouvoir</label></b>
+		</p>
+	</div>
+	 
+	<div class="info" id="info11">
+		<h2>Assassinat des Romanof - 1918</h2>
+		<p>
+		L’assassinat de la famille de Nicolas II a probablement été demandé par Lénine. 
+		Il a eu lieu le 17  juillet 1918 à Ekaterinbourg. Les révolutionnaires russes ont peur que le tsar 
+		reprenne le pouvoir ou s’évade. en Angleterre.
+		</p>
+		<button onclick="">Continuer</button>
+	</div>
+	 
+	<div class="indice" id="indice11">
+		<p><b>Dommage tu t'es trompé, mais voici un indice qui te sera utile.<br/><br/>
+		<label class="texteIndice">Quelques mois avant la prise de pouvoir de Lénine.</label></b>
+		</p>
+	</div>
+	 
+	<div class="info" id="info12">
+		<h2>Prise de pouvoir de Lénine - 1918</h2>
+		<p>
+		Vladimir Ilitch Oulianov (en russe : Влади́мир Ильи́ч Улья́нов), plus connu sous le nom de Lénine 
+		(en russe : Ле́нин), fonde l’Union soviétique (URSS) en 1918. 
+		Une de ses premières décisions est de prendre la terre aux riches propriétaires pour la 
+		répartir entre les paysans
+		</p>
+		<button onclick="">Continuer</button>
+	</div>
+	 
+	<div class="indice" id="indice12">
+		<p><b>Dommage tu t'es trompé, mais voici un indice qui te sera utile.<br/><br/>
+		<label class="texteIndice"> Cette année-là une grande guerre mondiale prit fin</label></b>
+		</p>
+	</div>
+	 
+	<div class="info" id="info13">
+		<h2>Arrivée au pouvoir de Staline - 1922</h2>
+		<p>
+		Joseph Staline, né Joseph Vissarionovitch Djougachvili le 18 décembre 1878 et mort le 5 mars 1953, est un homme politique soviétique d'origine géorgienne.
+		À quatorze ans, il est envoyé dans un monastère orthodoxe pour y devenir prêtre comme le souhaite sa mère, mais il se fait renvoyer à cause de ses idées révolutionnaires. 
+		Rallié aux idées de Lénine, il devient membre du Parti bolchevik, mais il se fait plusieurs fois déporter en Sibérie et finit toujours par s'échapper. C'est alors qu'il prend le surnom de Staline (« homme d'acier »).
+		Après la mort de Lénine en 1924, il devient chef du gouvernement et consolide la révolution en Russie, qui devient une dictature.
+		</p>
+		<button onclick="">Continuer</button>
+	</div>
+	 
+	<div class="indice" id="indice13">
+		<p><b>Dommage tu t'es trompé, mais voici un indice qui te sera utile.<br/><br/>
+		<label class="texteIndice">Staline prit le pouvoir 2 ans avant la mort de Lénine.</label></b>
+		</p>
+	</div>
+	 
+	<div class="info" id="info14">
+		<h2>Le cuirassé Potemkine - 1925</h2>
+		<p>
+		Le Cuirassé « Potemkine » (en russe : Броненосец «Потёмкин») est un film soviétique muet réalisé par Sergueï Eisenstein, sorti en 1925. Il raconte l’histoire de la révolte des marins du bateau militaire Potemkine dans le port d’Odessa en 1905.
+		Le cuirassé reproduit, dans le petit monde de son équipage, les inégalités de la société russe.
+		Une scène est très célèbre: celle d’une poussette qui dévale les escaliers du Port d’Odessa.
+		</p>
+		<button onclick="">Continuer</button>
+	</div>
+	 
+	<div class="indice" id="indice14">
+		<p><b>Dommage tu t'es trompé, mais voici un indice qui te sera utile.<br/><br/>
+		<label class="texteIndice">C’était un film muet qui raconte le début de la révolution Russe de 1905.</label></b>
+		</p>
+	</div>
+	 
+	<div class="info" id="info15">
+		<h2>Goulags - 1934</h2>
+		<p>
+		Les camps de travail forcé ont existé depuis 1920. Staline les a renforcés et structurés. 
+		Il y faisait enfermer toutes les personnes qu’il pensait opposée à son régime. 
+		Les goulags ont été arrêtés avec l’arrivée de Gorbatchov au pouvoir en 1991 et l’ouverture 
+		de la Russie sur le reste du monde.
+		</p>
+		<button onclick="">Continuer</button>
+	</div>
+	 
+	<div class="indice" id="indice15">
+		<p><b>Dommage tu t'es trompé, mais voici un indice qui te sera utile.<br/><br/>
+		<label class="texteIndice">ça s'est passé entre les 2 guerres mondiales.</label></b>
+		</p>
+	</div>
+	 
+	<div class="info" id="info16">
+		<h2>Pierre et le Loup (Prokofiev) - 1936</h2>
+		<p>
+		Pierre et le Loup (Петя и волк en russe) est un conte musical pour enfants, dont le compositeur 
+		russe Sergueï Prokofiev (1891 - 1953) écrit le texte et compose la musique en 1936. 
+		Le but de l'œuvre est de faire découvrir aux enfants certains instruments de l'orchestre. Tandis que 
+		le récitant parle, l'orchestre ponctue le récit d'intermèdes musicaux où les différents protagonistes sont 
+		personnifiés par des instruments.
+		Tous les personnages ont un thème particulier qui apparaît à chacune de leurs entrées dans l'histoire. 
+		Walt Disney en a fait un dessin animé en 1946.
+		</p>
+		<button onclick="">Continuer</button>
+	</div>
+	 
+	<div class="indice" id="indice16">
+		<p><b>Dommage tu t'es trompé, mais voici un indice qui te sera utile.<br/><br/>
+		<label class="texteIndice">21 ans avant que les russes envoient le premier chien dans l’espace</label></b>
+		</p>
+	</div>
+	 
+	<div class="info" id="info17">
+		<h2>Début de la bataille de Stalingrad - 1942</h2>
+		<p>
+		C’est l’ensemble des combats qui se déroulèrent devant Stalingrad (aujourd'hui Volgograd) et au cours 
+		desquels les forces allemandes nazies qui assaillaient la ville furent encerclées et contraintes à la 
+		défaite par les soldats russe (armée rouge). Cette bataille a duré de juillet 1942 à février 1943.
+		Elle marque un tournant dans la seconde guerre mondiale car c’est la 1ère fois que les allemands reculent.
+		</p>
+		<button onclick="">Continuer</button>
+	</div>
+	 
+	<div class="indice" id="indice17">
+		<p><b>Dommage tu t'es trompé, mais voici un indice qui te sera utile.<br/><br/>
+		<label class="texteIndice">Les soldats pouvaient déjà se changer les idées en écoutant Pierre et le loup de Prokofiev</label></b>
+		</p>
+	</div>
+	 
+	<div class="info" id="info18">
+		<h2>Le 1er chien dans l’espace - 1957</h2>
+		<p>
+		Le 3 novembre 1957, Laïka est devenue le premier être vivant à voyager dans l'Espace. 
+		Elle a été envoyée par l'URSS à bord de l'engin spatial Spoutnik 2, un mois à peine après le lancement 
+		du premier satellite artificiel Spoutnik 1.
+		Le succès de Spoutnik 1 ayant été considérable, les soviétiques désiraient franchir un nouveau pas : 
+		envoyer un être vivant dans l'Espace ! La construction de Spoutnik 2 fut effective en <b>quatre semaines seulement</b>. 
+		Une précipitation qui allait s'avérer fatale pour Laïka puisque dés le départ du projet il 
+		était convenu qu'ils ne pourraient pas la récupérer.
+		</p>
+		<button onclick="">Continuer</button>
+	</div>
+	 
+	<div class="indice" id="indice18">
+		<p><b>Dommage tu t'es trompé, mais voici un indice qui te sera utile.<br/><br/>
+		<label class="texteIndice">Les kholkozes existent depuis près de 40 ans</label></b>
+		</p>
+	</div>
+	 
+	<div class="info" id="info19">
+		<h2>Le 1er homme dans l'espace - 1961</h2>
+		<p>
+		 A 27 ans, le cosmonaute soviétique Youri Gagarine est le premier homme à effectuer un vol dans l'espace. 
+		 Il s'envole de la station spatiale de Tyura-Tam à 9h07 à bord de la fusée Vostok 1 (Orient en russe). 
+		 108 minutes plus tard, il a accompli une révolution complète autour de la Terre et atterrit en Sibérie. 
+		 Après le lancement du premier satellite "Spoutnik" le 4 octobre 1957, les Russes prennent une avance 
+		 décisive dans la course à l'espace qui les oppose aux Américains.
+		</p>
+		<button onclick="">Continuer</button>
+	</div>
+	 
+	<div class="indice" id="indice19">
+		<p><b>Dommage tu t'es trompé, mais voici un indice qui te sera utile.<br/><br/>
+		<label class="texteIndice">30 ans après, l’empire soviétique éclatera et la Fédération de Russie sera créée</label></b>
+		</p>
+	</div>
+	 
+	<div class="info" id="info20">
+		<h2>Karpov devient champion - 1965</h2>
+		<p>
+		Anatoli Ievguenievitch Karpov (en russe : Анатолий Евгеньевич Карпов), né le 23 mai 1951 à Zlatooust,
+		dans l'oblast de Tcheliabinsk en URSS, est un joueur d'échecs russe. Il est grand maître international 
+		d'échecs depuis 1970 et ancien champion du monde. Il a disputé dix finales du championnat du monde de 1978 
+		à 1998 et possède un des plus grands palmarès de l'histoire du jeu avec, en juillet 2005, plus de 160
+		premières places seul ou ex æquo, en tournoi, compétition par équipes ou match à son actif. La Russie a 
+		produit plusieurs autres champions d’échec. Il y a longtemps que ce sport intellectuel est populaire en 
+		Russie — on dit même que le tsar Ivan IV est décédé au milieu d'une partie, en 1584. 
+		</p>
+		<button onclick="">Continuer</button>
+	</div>
+	 
+	<div class="indice" id="indice20">
+		<p><b>Dommage tu t'es trompé, mais voici un indice qui te sera utile.<br/><br/>
+		<label class="texteIndice"> 10 ans avant que Gorbatochev ne devienne président de la Russie</label></b>
+		</p>
+	</div>
+
+	<div class="info" id="info21">
+		<h2>Invention de Tetris - 1984</h2>
+		<p>
+		Tetris est un jeu vidéo de puzzle conçu en 1984 par Alekseï Pajitnov. Bâti sur des règles simples et 
+		exigeant intelligence et adresse, il est l'un des jeux vidéo les plus populaires au monde. 
+		Ses versions sont innombrables, y compris en 3D, et cette multiplicité se décline sur tous les types 
+		d'ordinateurs.
+		Il est considéré comme un des grands classiques de l'histoire des jeux vidéo aux côtés de Pong, 
+		Space Invaders ou encore Pac-Man.
+		</p>
+		<button onclick="">Continuer</button>
+	</div>
+	 
+	<div class="indice" id="indice21">
+		<p><b>Dommage tu t'es trompé, mais voici un indice qui te sera utile.<br/><br/>
+		<label class="texteIndice">Téris fêtra ses 50 ans l’année prochaine</label></b>
+		</p>
+	</div>
+	 
+	<div class="info" id="info22">
+	  <h2>Arrivée de Gorbatchev au pouvoir - 1985</h2>
+		<p>Mikhaïl Sergueïevitch Gorbatchev (en russe : Михаил Сергеевич Горбачё), né le 2 mars 1931 à 
+		Privolnoïe dans l'actuel kraï de Stavropol, est un homme d'État soviétique et russe qui dirigea l'URSS 
+		entre 1985 et 1991.Il a changé profondément l’URSS en faisant des réformes économiques (Perestroika) 
+		et en permettant plus de liberté d’expression à la population. C’est sous sa direction que le mur de Berlin 
+		tombe en 1989 et que l’Allemange est réunifiée.
+		</p>
+		<button onclick="">Continuer</button>
+	 </div>
+	 
+	<div class="indice" id="indice22">
+		<p><b>Dommage tu t'es trompé, mais voici un indice qui te sera utile.<br/><br/>
+		<label class="texteIndice">Son arrivée correspond au début de la Perestroika</label></b>
+		</p>
+	</div>
+	 
+	<div class="info" id="info23">
+		<h2>Perestroika - 1985</h2>
+		<p>La prestroika  (« перестройка  » en russe, qui signifie : reconstruction, restructuration)
+		est le nom donné aux réformes économiques et sociales menées par Mikhaïl Gorbatchev en URSS 
+		d'avril 1985 à décembre 1991. Elles ont été décidée face au retard technologique et  
+		scientifique de l’Union Soviétique (URSS).
+		</p>
+		<button onclick="">Continuer</button>
+	</div>
+	 
+	<div class="indice" id="indice23">
+		<p><b>Dommage tu t'es trompé, mais voici un indice qui te sera utile.<br/><br/>
+		<label class="texteIndice">Tout le monde jouait déjà à Tetris cette année-là</label></b>
+		</p>
+	</div>
+	 
+	<div class="info" id="info24">
+		<h2>Création de la Fédération de Russie - 1991</h2>
+		<p>TODO
+		</p>
+		<button onclick="">Continuer</button>
+	</div>
+	 
+	<div class="indice" id="indice24">
+		<p><b>Dommage tu t'es trompé, mais voici un indice qui te sera utile.<br/><br/>
+		<label class="texteIndice">Même année que le début de la guerre de Yougoslavie</label></b>
+		</p>
+	</div>
+	</div>
+ 
+</body>
+</html>

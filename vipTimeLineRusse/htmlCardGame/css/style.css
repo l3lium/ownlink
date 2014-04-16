@@ -1,0 +1,131 @@
+body {
+  margin: 30px;
+  font-family: "Georgia", serif;
+  line-height: 1.8em;
+  color: #333;
+ 
+}
+
+.welcome {
+  background:url(../img/welcome.png);
+  width:1024px;
+  margin: 0 auto;
+  height:700px;
+  background-repeat:no-repeat;
+  text-align:center;
+background-size:97% 100%;
+}
+
+
+.scenario {
+  background:url(../img/decor.png);
+  margin: 0 auto;
+  height:760px;
+  width:1500px;
+  background-repeat:no-repeat;
+  background-size:120% 100%;
+  text-align:center;
+  padding-top:10px;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  text-align:center;
+}
+p {text-align:justify;}
+ 
+/* Main content area */
+#content {
+  margin: 5px 5px;
+  text-align: center;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+
+
+button  {
+	-moz-box-shadow:inset 0px 1px 0px 0px #fff6af;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #fff6af;
+	box-shadow:inset 0px 1px 0px 0px #fff6af;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffec64), color-stop(1, #ffab23) );
+	background:-moz-linear-gradient( center top, #ffec64 5%, #ffab23 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffec64', endColorstr='#ffab23');
+	background-color:#ffec64;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #ffaa22;
+	display:inline-block;
+	color:#333333;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #ffee66;
+}
+button:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffab23), color-stop(1, #ffec64) );
+	background:-moz-linear-gradient( center top, #ffab23 5%, #ffec64 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffab23', endColorstr='#ffec64');
+	background-color:#ffab23;
+}
+button:active {
+	position:relative;
+	top:1px;
+}
+
+
+.intro {
+  position: absolute;
+  left: 639px; !important;
+  top: 50px; !important;
+  width: 0;
+  height: auto;
+  z-index: 100;
+  background: white;
+  border: 2px solid #333;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
+  -webkit-box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
+  box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
+  padding: 20px;
+}
+
+label {
+font-size:45px;
+color : white;
+}
+
+.scenario p {
+	font-size:18px;
+	text-align:center;
+}
+.train {
+	background: url(../img/train1.png);
+	height: 100%;
+	background-repeat:no-repeat;
+	background-position:33% -20%;
+	margin-bottom : -15px;
+} 
+
+#introMessage {
+	background-color : white;
+	opacity:0.8;
+	width:500px;
+	margin:0 auto;
+	margin-top:30px;
+	height:470px;
+	text-align:center;
+	border: 2px solid #333;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+  box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+}
