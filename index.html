@@ -3,39 +3,53 @@
     <head>
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="script/mainscript.js"></script>
         <style type="text/css">
-            #divLeft{
-                width: 590px;
-                height: 880px;
-                background-color: blue;
-                float: left;
-            }
-
-            #divMid{
-                width: 590px;
-                height: 880px;    
-                background-color: yellow;
-                margin: auto;
-
-            }
-
-            #divRight{
-                width: 590px;
-                height: 880px;    
-                background-color: red;
-                float: right;
-
-            }
             #Main{
                 padding: 50px;
+                width: 100%;
+            }
+            .column{
+                width: 560px;
+                height: 880px;    
+                float: left;
+                margin-left: 10px;
+                opacity: 0.5;
+                border-style: dashed;
+                border-width: 1px;	
+            }
+
+            .item{
+                width: 100px;
+                height: 100px;
+                margin-left: 10px;
+                margin-top: 10px;
+                float: left;
+                background-color: orange;
+            }
+            
+            .ui-state-highlight{
+                background: #77527B;
             }
         </style>
     </head>
     <body>
         <div id="Main">
-            <div id="divRight"></div>
-            <div id="divLeft"></div>
-            <div id="divMid"></div>
+            <div id="divLeft" class="column">
+                <div class="item">1</div>
+                <div class="item">2</div>
+                <div class="item">3</div>
+                <div class="item">4</div>
+            </div>
+            <div id="divMid" class="column">
+                <div class="item">5</div>
+                <div class="item">6</div>
+            </div>
+            <div id="divRight" class="column">
+                <div class="item">7</div>
+            </div>                
         </div>
     </body>
 </html>
