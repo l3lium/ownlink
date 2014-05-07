@@ -4,13 +4,24 @@
 */
 $(document).ready(function() {
     Ownlink.init();
+    
 });
 
 var Ownlink = { 
     init: function() {
+        $("#add").click(function(){
+            Ownlink.ajout()
+            });
         $( ".column" ).sortable({
-            connectWith: ".column"
+            connectWith: ".column",
+            placeholder: "ui-state-highlight"
         }).disableSelection();
+        
+
+    },
+    
+    ajout: function() {
+        $("#divLeft").append("<div class='item'></div>");  
     }
 }; 
 
