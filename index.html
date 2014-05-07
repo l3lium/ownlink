@@ -8,7 +8,8 @@
         <script type="text/javascript" src="script/mainscript.js"></script>
         <style type="text/css">
             #Main{
-                padding: 50px;
+                margin-left: 75px;
+                margin-top: 50px;   
                 width: 100%;
             }
             .column{
@@ -18,79 +19,59 @@
                 margin-left: 10px;
                 opacity: 0.5;
                 border-style: dashed;
-                border-width: 1px;	
+                border-width: 1px;
             }
 
             .item{
+                width: 98px;
+                height: 98px;
+                margin-left: 10px;
+                margin-top: 10px;
+                float: left;
+                background-color: orange;
+                -webkit-border-radius: 6px 6px 6px 6px;
+                border-radius: 6px 6px 6px 6px;
+                border: solid #FF6229 1px;
+            }
+            #add{
+                border: solid black 1px ;
+                width: 70px;
+                height: 70px;
+                background-color: red;
+                color : black;
+            }
+            .ui-state-highlight {
                 width: 100px;
                 height: 100px;
                 margin-left: 10px;
                 margin-top: 10px;
                 float: left;
-                background-color: orange;
-            }
-            
-            .ui-state-highlight{
-                background: #77527B;
-            }
-            #BtnNewObject{
-                width: 50px;
-                height: 50px;
-                border: solid black 1px;
-                float: right;
-                margin-left: 10px;
-                margin-top: 10px;
-                font-size: 35pt;
-                font-family: arial;
-                text-align: center;
-                font-weight: bold;
-            }
-
-            #BtnChangeSettings{
-                width: 50px;
-                height: 50px;
-                float: right;
-                margin-top: 10px;
-
-            }
-            #BtnNewObject{
-                width: 50px;
-                height: 50px;
-                border: solid black 1px;
-                float: right;
-                margin-left: 10px;
-                margin-top: 10px;
-                font-size: 35pt;
-                font-family: arial;
-                text-align: center;
-                font-weight: bold;
-            }
-
-            #BtnChangeSettings{
-                width: 50px;
-                height: 50px;
-                float: right;
-                margin-top: 10px;
-
+                opacity: 0.5;
+                outline: 5px auto #FF6229;
+                -webkit-border-radius: 6px 6px 6px 6px;
+                border-radius: 6px 6px 6px 6px;
+                background-color: #99ff99;
             }
         </style>
     </head>
     <body>
         <div id="Main">
             <div id="divLeft" class="column">
-                <div class="item">1</div>
-                <div class="item">2</div>
-                <div class="item">3</div>
-                <div class="item">4</div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
             </div>
             <div id="divMid" class="column">
-                <div class="item">5</div>
-                <div class="item">6</div>
+                <div class="item"></div>
+                <div class="item"></div>
             </div>
             <div id="divRight" class="column">
-                <div class="item">7</div>
-            </div>                
-        </div>
+                <div class="item"></div>
+            </div>
 
+        </div>
+        <div id="add">
+        </div>
     </body>
 </html>
