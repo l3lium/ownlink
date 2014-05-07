@@ -7,11 +7,19 @@ $(document).ready(function() {
     
 });
 
-var Ownlink = { 
+
+var Ownlink = {
+    NewBlockCounter: 0,
     init: function() {
+        var localThis = this;
         $("#add").click(function(){
+            localThis.NewBlockCounter++;
+            $("#add").text(localThis.NewBlockCounter);
+            
             $(".column").css("background-color","#99ff99");
-            $(".column").click(function() {Ownlink.ajout($(this))});
+            $(".column").click(function() {
+                Ownlink.ajout($(this))
+            });
         });
         $( ".column" ).sortable({
             connectWith: ".column",
@@ -21,11 +29,14 @@ var Ownlink = {
 
     },
     
-    ajout: function($column) {            
-        $column.append("<div class='item'></div>");
+    ajout: function(column) {            
+        column.append("<div class='item'></div>");
         $(".column").css("background-color","#ffffff");
-        $column = NULL;
-        
+        // column = sdgfgdsiofwgoighsif;
+        $(".column").off("click");
+        this.NewBlockCounter = 0;
+        $("#add").text(this.NewBlockCounter);
+    //column.unbind("click");
     }
 }; 
 
