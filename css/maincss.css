@@ -25,6 +25,7 @@
     border: solid #FF6229 1px;
     text-align: center;
 
+
 }
 a{
     font-family: Arial;
@@ -36,10 +37,20 @@ a{
     border: solid black 1px ;
     width: 70px;
     height: 70px;
-    background-color: red;
+    background-color: #ccccff;
     color : black;
     float: right;
     text-align: center;
+}
+#lock{
+    border: solid black 1px ;
+    width: 70px;
+    height: 70px;
+    background-color:  #ccccff;
+    color : black;
+    float: right;
+    text-align: center;
+    margin-top: 10px;
 }
 .ui-state-highlight {
     width: 100px;
