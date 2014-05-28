@@ -1,25 +1,50 @@
 /* Main script Ownlink Project
  * Autors: OLIVEIRA Stéphane & BURTON Ian
- * Date: 30.4.2014
+ * Date: 21.05.2014
  */
 $(document).ready(function() {
-    Ownlink.init();
+    var dada = new Ownlink();
+    dada.init();
     
 });
 
+var Ownlink = function()
+{
+    this.newBlockCounter = 0;
+    //this.isLocked = true;
+    //Mode d'utilisation:
+    //0 - Edit
+    //1 - lock 
+    this.mode = 0;
+    
+    this.columns = [];
+    this.columns.push(new column(1)); 
+    this.columns.push(new column(2));
+    this.columns.push(new column(3));
+}
 
-var Ownlink = {
-    NewBlockCounter: 0,
-    IsLocked: true,
+Ownlink.prototype =
+{
     init: function() {
         var localThis = this;
+        $('#menu').hide();
         $("#add").click(function(){
             localThis.NewBlockCounter++;
             $("#add").text(localThis.NewBlockCounter);
 
-            $(".column").css("background-color","#99ff99");
+            $(".column").css("background-color","#99ff99");                
             $(".column").click(function() {
-                Ownlink.ajout($(this))
+                var columnClick =$(this);
+                $('#menu').show();
+                $( "input[name='ok']" ).click(function(){
+                    for (var i=1;i<= localThis.columns.length ;i++){
+                        localThis.columns[i].addItem($( "input[name='title']" ).val(), $( "input[name='linkInput']" ).val());
+                    }
+                    $('#menu').hide();
+                });
+                $( "input[name='cancel']" ).click(function(){
+                    $('#menu').hide();
+                });
             });
         });
         $("#lock").click(function(){
@@ -44,14 +69,34 @@ var Ownlink = {
 
     },
     
-    ajout: function(column) {            
+    ajout: function(column) {
         column.append("<div class='item'></div>");
         $(".column").css("background-color","#ffffff");
-        // column = sdgfgdsiofwgoighsif;
         $(".column").off("click");
         this.NewBlockCounter = 0;
         $("#add").text(this.NewBlockCounter);
     //column.unbind("click");
     }
-}; 
+}
 
+var column = function(id)
+{
+    this.name = "Column "+id;
+    this.element = $(".column:eq( "+id+" )");
+    
+}
+
+column.prototype =
+{
+    changeName: function(name) {
+        this.name = name;
+    },
+    
+    addItem: function(name, url) {      
+        var item = $("<div class='item'></div>").appendTo(this.element);
+        $('<a>',{
+            text: name,
+            href: url
+        }).appendTo(item);
+    }
+}
