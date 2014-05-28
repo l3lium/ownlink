@@ -8,6 +8,7 @@ $(document).ready(function() {
 var Ownlink = {
     NewBlockCounter: 0,
     IsLocked: true,
+    modification: false,
     init: function() {
         var localThis = this;
         $("#add").click(function(){
@@ -47,8 +48,20 @@ var Ownlink = {
          
         $("#add").disableSelection();
         
-        $("$changetitle").click(function(){
-            
+        $("#changetitle").click(function(){
+            if(this.modification == true){
+                $("#lefttitle").text($("#edtleft").val());
+                $("#middletitle").text($("#edtmiddle").val());
+                $("#righttitle").text($("#edtright").val());
+                this.modification = false;
+                $("#changetitle").text("Change title");
+            }else{
+                $("#lefttitle").html("<div id='lefttitle'><input type='text' value='"+$("#lefttitle").text()+"' class='edittitle' id='edtleft'/></div>"); 
+                $("#middletitle").html("<div id='middletitle'><input type='text' value='"+$("#middletitle").text()+"' class='edittitle' id='edtmiddle'/></div>"); 
+                $("#righttitle").html("<div id='righttitle'><input type='text' value='"+$("#righttitle").text()+"' class='edittitle' id='edtright'/></div>");
+                this.modification = true;
+                $("#changetitle").text("Validation");
+            }
         });
         
     },
